@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b32">
+  <title>Manobhaav | Test</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="topbar">
+        <a class="back" href="index.html">← All tests</a>
+        <span class="wordmark">MANOBHAAV</span>
+      </div>
+
+      <div id="test-header"></div>
+
+      <div class="participant">
+        <label for="participant-name">Your name</label>
+        <input id="participant-name" type="text" maxlength="100"
+               autocomplete="name" placeholder="Enter your name">
+        <p>Your name is used only to identify your submitted result.</p>
+      </div>
+
+      <form id="test-form"></form>
+
+      <div class="actions">
+        <button id="submit-btn" class="primary" type="button">Calculate score →</button>
+      </div>
+      <p id="error" class="error" hidden></p>
+    </section>
+  </main>
+  <script src="js/tests.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

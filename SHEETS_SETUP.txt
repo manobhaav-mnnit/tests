@@ -1,0 +1,178 @@
+MANOBHAAV — FINAL GOOGLE SHEETS SETUP
+======================================
+
+This version uses ONE Google Spreadsheet.
+
+Every test automatically gets its own Sheet tab.
+There is also an "All Responses" master tab.
+
+Example:
+
+  All Responses
+  GSE-10
+  Big Five
+  Motivation Test
+  etc.
+
+You do NOT need a separate Apps Script or URL for every test.
+
+
+STEP 1 — CREATE THE GOOGLE SHEET
+--------------------------------
+
+Create a Google Sheet, for example:
+
+Manobhaav Test Responses
+
+You do NOT need to manually create any tabs.
+
+The Apps Script will create them automatically.
+
+
+STEP 2 — OPEN APPS SCRIPT
+-------------------------
+
+In the Google Sheet:
+
+Extensions → Apps Script
+
+Delete the existing Code.gs contents.
+
+Paste the contents of:
+
+apps-script/Code.gs
+
+Save.
+
+
+STEP 3 — DEPLOY AS A WEB APP
+----------------------------
+
+In Apps Script:
+
+Deploy → New deployment
+
+Select:
+
+Web app
+
+Set:
+
+Execute as:
+    Me
+
+Who has access:
+    Anyone
+
+Click Deploy.
+
+Google may ask you to authorize the script.
+
+Authorize it using the Google account that owns the Sheet.
+
+
+STEP 4 — COPY THE WEB APP URL
+-----------------------------
+
+You will receive a URL similar to:
+
+https://script.google.com/macros/s/XXXXXXXX/exec
+
+Copy the entire URL.
+
+
+STEP 5 — CONNECT THE WEBSITE
+----------------------------
+
+Open:
+
+js/app.js
+
+Find:
+
+const SHEETS_ENDPOINT = "";
+
+Change it to:
+
+const SHEETS_ENDPOINT =
+  "https://script.google.com/macros/s/XXXXXXXX/exec";
+
+Use YOUR actual URL.
+
+Commit the change to GitHub.
+
+
+STEP 6 — TEST
+-------------
+
+Open the GitHub Pages site.
+
+Take GSE-10.
+
+Enter a name.
+
+Answer all 10 questions.
+
+Submit.
+
+The score appears immediately.
+
+The Google Sheet should automatically contain:
+
+GSE-10 tab:
+
+Timestamp | Name | Q1 ... Q10 | Score | Level
+
+
+And:
+
+All Responses tab:
+
+Timestamp | Test ID | Test | Name | Q1 ... Q10 | Score | Level
+
+
+STEP 7 — ADDING FUTURE TESTS
+----------------------------
+
+Add another test object to:
+
+js/tests.js
+
+Example ID:
+
+"big-five"
+
+When somebody submits that test for the first time, Apps Script automatically creates:
+
+Big Five
+
+as a new Sheet tab.
+
+No new Apps Script.
+No new Google Sheet.
+No new backend URL.
+
+IMPORTANT:
+If you change the number of questions for a test after its Sheet tab
+has already been created, the existing tab's columns will not be
+automatically rewritten. For a new version of an existing test, use a
+new test ID or adjust the sheet manually.
+
+
+PRIVACY
+-------
+
+The website calculates the score locally.
+
+If SHEETS_ENDPOINT is blank, nothing is submitted to Google Sheets.
+
+Once connected, the site submits:
+- Name
+- Test ID
+- Test name
+- Individual answer scores
+- Total score
+- Result level
+- Timestamp
+
+Do not collect more personal information than your magazine actually needs.
