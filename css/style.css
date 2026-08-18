@@ -263,6 +263,13 @@ p {
   font-weight: 700;
 }
 
+.test-attribution {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 /* =========================
    NAME FIELD
 ========================= */
@@ -570,6 +577,31 @@ button:disabled {
   color: var(--muted);
 
   font-size: 17px;
+}
+
+.result-interventions {
+  max-width: 650px;
+  margin: 28px auto 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #faf8f2;
+  text-align: left;
+}
+
+.result-interventions h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.result-interventions ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.result-interventions li + li {
+  margin-top: 8px;
 }
 
 .note {

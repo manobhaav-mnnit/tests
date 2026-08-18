@@ -7,7 +7,7 @@ const tests = {
   "gse-10": {
     title: "General Self-Efficacy Scale (GSE-10)",
     description: "Rate how true each statement is for you in general.",
-    attribution: "Schwarzer, R., & Jerusalem, M. (1995).",
+    attribution: "Developed by: Schwarzer, R., & Jerusalem, M. (1995). Generalized Self-Efficacy scale. In J. Weinman, S. Wright, & M. Johnston, Measures in health psychology: A user’s portfolio. Causal and control beliefs (pp. 35–37). Windsor, UK: NFER-NELSON.",
     instructions: "Choose one response for every statement.",
     options: [
       { text: "Not at all true", score: 1 },
@@ -48,6 +48,13 @@ const tests = {
         label: "Higher self-efficacy",
         description: "Your score falls in the higher self-efficacy range."
       }
+    ],
+    interventions: [
+      "Tiny wins log",
+      "Break the big thing down",
+      "Rename the nervous feeling",
+      "Weekly challenge task",
+      "Effort review, not outcome review"
     ],
     note: "The scale's authors did not publish official clinical cut-offs. These ranges are a commonly used general-purpose convention for individual feedback."
   }

@@ -67,6 +67,9 @@ function renderTest() {
     <h1>${escapeHtml(test.title)}</h1>
     <p class="muted">${escapeHtml(test.description)}</p>
     <p class="instructions">${escapeHtml(test.instructions)}</p>
+    ${test.attribution ? `
+      <p class="test-attribution">${escapeHtml(test.attribution)}</p>
+    ` : ""}
   `;
 
   test.questions.forEach((question, index) => {
@@ -227,6 +230,19 @@ function renderResults() {
   const range = test.ranges.find(
     r => saved.score >= r.min && saved.score <= r.max
   );
+  const interventions = Array.isArray(test.interventions)
+    ? test.interventions
+    : [];
+  const interventionsHtml = interventions.length
+    ? `
+      <section class="result-interventions">
+        <h3>Suggested interventions</h3>
+        <ul>
+          ${interventions.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+      </section>
+    `
+    : "";
 
   results.innerHTML = `
     <p class="eyebrow">YOUR RESULT</p>
@@ -246,6 +262,8 @@ function renderResults() {
           : "Your score has been calculated."
       )}
     </p>
+
+    ${interventionsHtml}
 
     <p class="note">${escapeHtml(test.note)}</p>
 
